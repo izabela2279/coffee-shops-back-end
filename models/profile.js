@@ -10,6 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Profile.belongsTo(models.User, { foreignKey: 'userId' })
+
+      Profile.hasMany(models.Rating, {
+        as: 'ratingsGiven',
+        foreignKey: 'ratingId',
+      })
+
+      Profile.hasMany(models.Rating, {
+        as: 'ratingsReceived',
+        foreignKey: 'ratingId',
+      })
     }
   }
 
